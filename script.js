@@ -11,6 +11,15 @@
         ,'images/watermelon.png'
     ];
     let imgDoubArr = imgUrlArr.concat(imgUrlArr)
-    console.log(imgDoubArr);
+    console.log('original' + imgDoubArr);
+
+    //___________________________START___________________________
+    document.getElementById('start').addEventListener('click', ()=>{
+        let shuffledArr = imgDoubArr.sort((a,b)=> 0.5 - Math.random())
+        console.log('shuffle' + shuffledArr);
+        for (let i =0 ; i < shuffledArr; i++){
+            
+        }
+    })
 
 })();
