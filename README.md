@@ -16,7 +16,7 @@
 - [x] add a start button
 - [x] create img elements
 - [x] assign img urls in a loop and append them to the divs
-- [ ] take the display img codes out of event listener so that you can use it later
+- [x] take the display img codes out of event listener so that you can use it later
 - [ ] make the images to be shown for 5s and then flip them back
 ## html
 - [x] add bootstrap to your page
