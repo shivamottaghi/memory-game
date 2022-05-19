@@ -10,5 +10,7 @@
         ,'images/umbrella.png'
         ,'images/watermelon.png'
     ];
+    let imgDoubArr = imgUrlArr.concat(imgUrlArr)
+    console.log(imgDoubArr);
 
 })();
