@@ -7,11 +7,15 @@
 - Explanation on the page itself
 ---
 ###  My to do list:
-## Js 
-- [ ] folder structure
-- [ ] find some images
-- [ ] create an array with img urls
-- [ ] double the array so you have each image twice
-- [ ] shuffle the array randomly and store its result in a new array
+- [x] folder structure
+- [x] find some images
+## Js
+- [x] create an array with img urls
+- [x] double the array so you have each image twice
+- [x] shuffle the array randomly and store its result in a new array
+- [x] add a start button
+- [x] create img elements
+- [x] assign img urls in a loop and append them to the divs
 ## html
--[ ] div divided to 16 blocks 4 col 4 row for each card 
+- [x] add bootstrap to your page
+- [x] div divided to 16 blocks 4 col 4 row for each card 
