@@ -45,13 +45,14 @@
       let divFlipInner = document.createElement('div');
       divFlipInner.setAttribute('class', 'flip-box-inner');
       let divFlipFront = document.createElement('div');
-      divFlipFront.setAttribute('class' , 'flip-box-front');
-      divFlipFront.setAttribute('id' , `${colId}`);
+      divFlipFront.setAttribute('class' , 'flip-box-front questionImg');
+      /*let questionMarkImage = document.createElement('img');
+      questionMarkImage.src = 'images/question.png';
+      questionMarkImage.height = 200;*/
       let divFlipBack = document.createElement('div');
       divFlipBack.setAttribute('class' , 'flip-box-back' );
-      let parForBack = document.createElement('p');
-      parForBack.innerHTML = 'Turn it around to see the card';
-      divFlipBack.appendChild(parForBack);
+      divFlipBack.setAttribute('id' , `${colId}`);
+      /*divFlipFront.appendChild(questionMarkImage);*/
       divFlipInner.appendChild(divFlipFront);
       divFlipInner.appendChild(divFlipBack);
       divFlipBox.appendChild(divFlipInner);
@@ -62,6 +63,15 @@
     const displayImages = () => {
         let imgTags = document.querySelectorAll('img');
         imgTags.forEach(el => el.remove());
+        let frontImageTag = document.querySelectorAll('.questionImg');
+        let qImg = document.createElement('img');
+        qImg.src = 'images/question.png';
+        qImg.height = 200;
+        frontImageTag.forEach(elm => {
+            qImg.src = 'images/question.png';
+            qImg.height = 200;
+            elm.appendChild(qImg);
+        })
         let shuffledArr = imgDoubArr.sort((a,b)=> 0.5 - Math.random())
         console.log('before for loop')
         for (let i =0 ; i < shuffledArr.length; i++){
@@ -69,7 +79,7 @@
 
             let child = document.createElement('img');
             child.src = shuffledArr[i];
-            child.height = '200';
+            child.height = 200;
             parentTag.appendChild(child);
         }
     }
