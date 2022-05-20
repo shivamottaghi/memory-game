@@ -18,8 +18,10 @@
 - [x] assign img urls in a loop and append them to the divs
 - [x] take the display img codes out of event listener so that you can use it later
 - [ ] write a function to append flip box into the divs
-  - [ ] first add all the page structure by js so that you can add levels and increase the number of cards
-  - [ ] add flip box classes to css then apply them to the divs in order
+  - [x] first add all the page structure by js so that you can add levels and increase the number of cards
+  - [x] add flip box classes to css then apply them to the divs in order
+  - [ ] set a single image for all the card's front and show the main images on the back
+  - [ ] make them turn by click
 - [ ] make the images to be shown for 5s and then flip them back
 ## html
 - [x] add bootstrap to your page
