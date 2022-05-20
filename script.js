@@ -29,13 +29,34 @@
           row.setAttribute('class', 'row my-2');
           for (let j = 0 ; j < 4 ; j++){
               let col = document.createElement('div');
-              col.setAttribute('id', `${colId}`);
-              colId ++;
+              col.setAttribute('id', `col${colId}`);
               col.setAttribute('class', 'col-6 col-md-3 text-center');
+              col = addFlipBox(col , colId);
+              colId ++;
               row.appendChild(col);
           }
           parentTag.appendChild(row);
       }
+    }
+
+    const addFlipBox = (col , colId) => {
+      let divFlipBox = document.createElement('div');
+      divFlipBox.setAttribute('class' , 'flip-box' );
+      let divFlipInner = document.createElement('div');
+      divFlipInner.setAttribute('class', 'flip-box-inner');
+      let divFlipFront = document.createElement('div');
+      divFlipFront.setAttribute('class' , 'flip-box-front');
+      divFlipFront.setAttribute('id' , `${colId}`);
+      let divFlipBack = document.createElement('div');
+      divFlipBack.setAttribute('class' , 'flip-box-back' );
+      let parForBack = document.createElement('p');
+      parForBack.innerHTML = 'Turn it around to see the card';
+      divFlipBack.appendChild(parForBack);
+      divFlipInner.appendChild(divFlipFront);
+      divFlipInner.appendChild(divFlipBack);
+      divFlipBox.appendChild(divFlipInner);
+      col.appendChild(divFlipBox);
+      return col ;
     }
 
     const displayImages = () => {
@@ -48,7 +69,7 @@
 
             let child = document.createElement('img');
             child.src = shuffledArr[i];
-            child.height = '128';
+            child.height = '200';
             parentTag.appendChild(child);
         }
     }
