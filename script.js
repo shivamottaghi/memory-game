@@ -26,11 +26,11 @@
       for (let i = 0 ; i < numberOfRows ; i ++){
           let row = document.createElement('div');
           row.setAttribute('id', `row${i}`);
-          row.setAttribute('class', 'row my-2');
+          row.setAttribute('class', 'row my-1');
           for (let j = 0 ; j < 4 ; j++){
               let col = document.createElement('div');
               col.setAttribute('id', `col${colId}`);
-              col.setAttribute('class', 'col-6 col-md-3 text-center');
+              col.setAttribute('class', 'col-6 col-md-3 text-center flip-box');
               col = addFlipBox(col , colId);
               colId ++;
               row.appendChild(col);
@@ -40,23 +40,17 @@
     }
 
     const addFlipBox = (col , colId) => {
-      let divFlipBox = document.createElement('div');
-      divFlipBox.setAttribute('class' , 'flip-box' );
-      let divFlipInner = document.createElement('div');
-      divFlipInner.setAttribute('class', 'flip-box-inner');
-      let divFlipFront = document.createElement('div');
-      divFlipFront.setAttribute('class' , 'flip-box-front questionImg');
-      /*let questionMarkImage = document.createElement('img');
-      questionMarkImage.src = 'images/question.png';
-      questionMarkImage.height = 200;*/
-      let divFlipBack = document.createElement('div');
-      divFlipBack.setAttribute('class' , 'flip-box-back' );
-      divFlipBack.setAttribute('id' , `${colId}`);
-      /*divFlipFront.appendChild(questionMarkImage);*/
-      divFlipInner.appendChild(divFlipFront);
-      divFlipInner.appendChild(divFlipBack);
-      divFlipBox.appendChild(divFlipInner);
-      col.appendChild(divFlipBox);
+      let divFlipContainer = document.createElement('div');
+        divFlipContainer.setAttribute('class' , 'flipImgContainer' );
+      let frontImg = document.createElement('div');
+      frontImg.setAttribute('class', 'frontImage questionImg');
+      let backImg = document.createElement('div');
+      backImg.setAttribute('class' , 'backImg');
+
+      backImg.setAttribute('id' , `${colId}`);
+      divFlipContainer.appendChild(frontImg);
+      divFlipContainer.appendChild(backImg);
+      col.appendChild(divFlipContainer);
       return col ;
     }
 
@@ -67,27 +61,52 @@
         frontImageTag.forEach(elm => {
             let qImg = document.createElement('img');
             qImg.src = 'images/question.png';
-            qImg.height = 200;
-            qImg.src = 'images/question.png';
-            qImg.height = 200;
+            qImg.height = 150;
+            /*qImg.src = 'images/question.png';
+            qImg.height = 200;*/
             elm.appendChild(qImg);
         })
         let shuffledArr = imgDoubArr.sort((a,b)=> 0.5 - Math.random())
-        console.log('before for loop')
         for (let i =0 ; i < shuffledArr.length; i++){
             let parentTag = document.getElementById(`${i}`);
             let child = document.createElement('img');
             child.src = shuffledArr[i];
-            child.height = 200;
+            child.height = 150;
             parentTag.appendChild(child);
         }
     }
     const imagesEventListener = () => {
-
-        let images = document.querySelectorAll('.flip-box')
-        images.forEach(el => {
+        let imageFound = 0;
+        let prevClicked
+        let numberOfClicks = 0;
+        let images = document.querySelectorAll('.flipImgContainer')
+        images.forEach((el) => {
             el.addEventListener('click' , ()=>{
-                el.querySelector('.flip-box-inner').style.transform = 'rotateY(180deg)';
+                if(numberOfClicks !== 2){
+                    el.classList.add("flipImg");
+                    numberOfClicks ++ ;
+                    console.log(numberOfClicks);
+                    if (numberOfClicks === 1){
+                        prevClicked = el;
+                    }
+                    if (numberOfClicks == 2){
+                        if(el.querySelector('.backImg>img').src !== prevClicked.querySelector('.backImg>img').src){
+                            setTimeout(()=>{
+                                console.log('not match');
+                                el.classList.remove("flipImg");
+                                prevClicked.classList.remove("flipImg");
+                                numberOfClicks = 0;
+                            }, 1000)
+                        }else {
+                            setTimeout(()=>{
+                                console.log('first'+ el.querySelector('img').src);
+                                console.log('second' + prevClicked.querySelector('img').src);
+                                numberOfClicks = 0
+                                console.log('match')
+                            } , 1000);
+                        }
+                    }
+                }
             })
         })
     }
