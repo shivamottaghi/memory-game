@@ -84,13 +84,19 @@
     }
     const imagesEventListener = () => {
 
+        let images = document.querySelectorAll('.flip-box')
+        images.forEach(el => {
+            el.addEventListener('click' , ()=>{
+                el.querySelector('.flip-box-inner').style.transform = 'rotateY(180deg)';
+            })
+        })
     }
 
     //_________________________ MY Functions End ____________________
 
     makeRowsAndCols();
     displayImages();
-    imgesEventListener();
+    imagesEventListener();
 
     //___________________________START___________________________
 
