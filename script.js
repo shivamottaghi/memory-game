@@ -64,10 +64,10 @@
         let imgTags = document.querySelectorAll('img');
         imgTags.forEach(el => el.remove());
         let frontImageTag = document.querySelectorAll('.questionImg');
-        let qImg = document.createElement('img');
-        qImg.src = 'images/question.png';
-        qImg.height = 200;
         frontImageTag.forEach(elm => {
+            let qImg = document.createElement('img');
+            qImg.src = 'images/question.png';
+            qImg.height = 200;
             qImg.src = 'images/question.png';
             qImg.height = 200;
             elm.appendChild(qImg);
@@ -76,18 +76,21 @@
         console.log('before for loop')
         for (let i =0 ; i < shuffledArr.length; i++){
             let parentTag = document.getElementById(`${i}`);
-
             let child = document.createElement('img');
             child.src = shuffledArr[i];
             child.height = 200;
             parentTag.appendChild(child);
         }
     }
+    const imagesEventListener = () => {
+
+    }
 
     //_________________________ MY Functions End ____________________
 
     makeRowsAndCols();
     displayImages();
+    imgesEventListener();
 
     //___________________________START___________________________
 
