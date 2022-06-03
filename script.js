@@ -62,8 +62,6 @@
             let qImg = document.createElement('img');
             qImg.src = 'images/question.png';
             qImg.height = 150;
-            /*qImg.src = 'images/question.png';
-            qImg.height = 200;*/
             elm.appendChild(qImg);
         })
         let shuffledArr = imgDoubArr.sort((a,b)=> 0.5 - Math.random())
@@ -102,11 +100,16 @@
                                 console.log('first'+ el.querySelector('img').src);
                                 console.log('second' + prevClicked.querySelector('img').src);
                                 numberOfClicks = 0
+                                imageFound ++;
+                                if (imageFound === imgUrlArr.length){
+                                    document.getElementById('start').innerText = 'You won! press to restart';
+                                }
                                 console.log('match')
                             } , 1000);
                         }
                     }
                 }
+
             })
         })
     }
